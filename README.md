@@ -15,5 +15,9 @@ go run src/main.go
 ```
 /albums
 ```
-
 OBS: Returns a static slice of fake music albums
+
+```
+/albums/:id
+```
+OBS: Returns a specific object o a message informing that the object doesn't exist
