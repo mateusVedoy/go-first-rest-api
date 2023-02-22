@@ -13,6 +13,7 @@ func StartRouter() {
 	router := gin.Default()
 
 	router.GET("/albums", controller.GetAlbums)
+	router.GET("/albums/:id", controller.GetAlbumById)
 
 	router.Run(PATH)
 }

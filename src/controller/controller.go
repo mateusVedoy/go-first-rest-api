@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -39,4 +40,30 @@ func GetAlbums(c *gin.Context) {
 		http.StatusOK,
 		albums,
 	)
+}
+
+func GetAlbumById(context *gin.Context) {
+	id := context.Param("id")
+
+	album, err := FindThrowArr(id)
+
+	if err != nil {
+		context.IndentedJSON(http.StatusNotFound, gin.H{"message": "Album not found"})
+		return
+	}
+
+	context.IndentedJSON(
+		http.StatusOK,
+		album,
+	)
+}
+
+func FindThrowArr(id string) (*models.Album, error) {
+	for i, alb := range albums {
+		if alb.Id == id {
+			return &albums[i], nil
+		}
+	}
+
+	return nil, errors.New("Album doesn't exist")
 }
