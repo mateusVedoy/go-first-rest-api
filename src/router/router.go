@@ -1,8 +1,8 @@
 package router
 
 import (
-	"github.com/mateusVedoy/go-first-rest-api/gin-gonic/src/controller"
 	"github.com/gin-gonic/gin"
+	"github.com/mateusVedoy/go-first-rest-api/src/controller"
 )
 
 func StartRouter() {
